@@ -1,0 +1,29 @@
+{% extends '_base.html' %}
+
+{% block title %}
+    <title>Sign up</title>
+{% endblock %}
+
+{% block main %}
+    <a href="/login/">Back to Login</a>
+    <span style="color: red">{{ error_text.0 }}</span>
+    <form method="post" action="/register/">
+        {% csrf_token %}
+        <div><label for="username">Username</label><input name="username" required="1" value="{{ username.0 }}"></div>
+        <div><label for="email">Email</label><input name="email" required="1" value="{{ email.0 }}"></div>
+        <div><label for="password">Password</label><input name="password" type="password" required="1" value="{{ password.0 }}"></div>
+        <div><label for="rep_password">Replay password</label><input name="rep_password" type="password" required="1" value="{{ rep_password.0 }}"></div>
+        <div><label for="about">About</label><textarea name="about" required="1" value="{{ about.0 }}"></textarea></div>
+        <div><label for="interview_date">Date interview</label><input name="interview_date" type="datetime" required="1" value="{{ interview_date.0 }}"></div>
+        <div><label for="instrucotor">Instructors</label>
+            <select name="instructor">
+                {% for i in instructors %}
+                    <option value="i.id">
+                        {{ i.username }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div><label for="same_time">Same time</label><input type="checkbox" name="same_time"></div>
+        <div><input type="submit" value="Register"></div>
+    </form>
+{% endblock %}

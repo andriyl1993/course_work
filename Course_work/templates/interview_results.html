@@ -1,0 +1,28 @@
+{% extends '_base.html' %}
+
+{% block title %}
+    <title>Interview Results</title>
+{% endblock %}
+
+{% block main %}
+    <form method="POST" action="/interview-result/">
+        {% csrf_token %}
+        <div><label for="start">Student</label>
+            <select name="student">
+                {% for s in students %}
+                    <option value="{{ s.id }}">{{ s.username }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div><label for="have_skills">Have skills</label><input name="have_skills"></div></div>
+        <div><label for="need_skills">Need skills</label><input name="need_skills"></div></div>
+        <div><label for="level">Level</label>
+            <select name="level">
+                {% for l in levels %}
+                    <option value="{{ l.0 }}">{{ l.1 }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div><input type="submit" value="Submit"></div>
+    </form>
+{% endblock %}

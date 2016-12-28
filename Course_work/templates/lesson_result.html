@@ -1,0 +1,22 @@
+{% extends '_base.html' %}
+
+{% block title %}
+    <title>Lesson Results</title>
+{% endblock %}
+
+{% block main %}
+    <form method="POST" action="/lesson-result/">
+        {% csrf_token %}
+        <div><label for="start">Lesson</label>
+            <select name="lesson">
+                {% for s in lessons %}
+                    <option value="{{ s.id }}">{{ s.student.username }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div><label for="new_skills">New skills</label><input name="new_skills"></div></div>
+        <div><label for="distance_travel_with">Distance of travel with student</label><input name="distance_travel_with"></div></div>
+        <div><label for="level">Distance without student</label><input name="distance_travel_without"></div>
+        <div><input type="submit" value="Submit"></div>
+    </form>
+{% endblock %}

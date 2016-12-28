@@ -1,0 +1,27 @@
+{% extends '_base.html' %}
+
+{% block title %}
+    <title>Managers</title>
+{% endblock %}
+
+{% block main %}
+    <a href="/">Back</a>
+    <table>
+        <thead>
+            <tr>
+                <th>№</th>
+                <th>Name</th>
+                <th>Phone</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for m in managers %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ m.username }}</td>
+                    <td>{{ m.phone }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

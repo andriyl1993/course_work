@@ -1,0 +1,16 @@
+{% extends '_base.html' %}
+
+{% block title %}
+    <title>Login</title>
+{% endblock %}
+
+{% block main %}
+    <a href="/register/">Sign up</a>
+    <span style="color: red">{{ error_text }}</span>
+    <form method="post" action="/login/">
+        {% csrf_token %}
+        <input name="username">
+        <input name="password" type="password">
+        <input type="submit">
+    </form>
+{% endblock %}

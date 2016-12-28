@@ -1,0 +1,22 @@
+{% extends '_base.html' %}
+
+{% block title %}
+    <title>Lesson</title>
+{% endblock %}
+
+{% block main %}
+    <form method="POST" action="/lesson/">
+        {% csrf_token %}
+        <div><label for="start">Date start</label><input type="datetime" name="start"></div>
+        <div><label for="place">Place</label><input name="place"></div></div>
+        <div><label for="instructor">Change Insructor</label>
+            <select name="change_instructor">
+                <option value="">Old</option>
+                {% for i in instructors %}
+                    <option value="{{ i.id }}">{{ i.username }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div><input type="submit" value="Submit"></div>
+    </form>
+{% endblock %}

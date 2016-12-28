@@ -1,0 +1,28 @@
+{% extends '_base.html' %}
+
+{% block title %}
+    <title>Index</title>
+{% endblock %}
+
+{% block main %}
+    <h6>Main page</h6>
+    <a href="/logout/">Logout</a>
+    {% if user.scholluser.role == 'client'%}
+        <a href="/lesson/">Create lesson</a>
+    {% endif %}
+
+    {% if user.scholluser.role == 'instrucor' or user.scholluser.role == 'instr_head' %}
+        <a href="/interview-result/">Interview results</a>
+        <a href="/lesson-result/">Lesson results</a>
+    {% endif %}
+
+    {% if user.scholluser.role == 'director' or user.scholluser.role == 'alternate' %}
+        <a href="/managers/">View managers</a>
+        <a href="/offices/">View offices</a>
+    {% endif %}
+
+    {% if user.scholluser.role == 'director' or user.scholluser.role == 'manager' %}
+        <a href="/count-workers/">Count workers</a>
+        <a href="/count-clients/">Count clients</a>
+    {% endif %}
+{% endblock %}

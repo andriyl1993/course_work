@@ -1,0 +1,39 @@
+{% extends '_base.html' %}
+
+{% block title %}
+    <title>Offices</title>
+{% endblock %}
+
+{% block main %}
+    <a href="/">Back</a>
+
+    <form method="get" action="offices">
+        <select name="city">
+            {% for c in cities %}
+                <option value="{{ c.id }}">{{ c.name }}</option>
+            {% endfor %}
+        </select>
+    <input type="submit" value="Submit">
+    </form>
+
+    {% if offices %}
+        <table>
+            <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Name</th>
+                    <th>City</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for o in offices %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ o.name }}</td>
+                        <td>{{ o.city.name }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}
